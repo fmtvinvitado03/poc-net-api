@@ -1,0 +1,46 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Dotnet tools
+*.dbmdl
+*.pdb
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+packages/
+.nuget/
+
+# Publish output
+publish/
+out/
+
+# Others
+*.vspscc
+*.vssscc
+_ReSharper*/
+*.resharper
+.idea/
+*.sln.ide
+
+# Secret files
+secrets.json
+
+# Rider
+*.sln.iml
