@@ -24,5 +24,11 @@ jobs:
       - name: Build
         run: dotnet build demo-api.csproj --configuration Release --no-restore
 
+      - name: Publish build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: bin/Release/
+
       - name: Test
         run: dotnet test demo-api.csproj --no-build --verbosity normal
