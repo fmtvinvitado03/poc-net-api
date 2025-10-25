@@ -50,4 +50,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: soabel/poc-net-api:latest
+          tags: |
+            soabel/poc-net-api:latest
+            soabel/poc-net-api:${{ github.sha }}
