@@ -2,9 +2,9 @@ name: .NET 9 CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ trainer ]
   pull_request:
-    branches: [ main ]
+    branches: [ trainer ]
 
 jobs:
   build:
