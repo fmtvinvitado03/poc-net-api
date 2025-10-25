@@ -19,10 +19,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore poc-net-api/demo-api.csproj
+        run: dotnet restore demo-api.csproj
 
       - name: Build
-        run: dotnet build poc-net-api/demo-api.csproj --configuration Release --no-restore
+        run: dotnet build demo-api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test poc-net-api/demo-api.csproj --no-build --verbosity normal
+        run: dotnet test demo-api.csproj --no-build --verbosity normal
