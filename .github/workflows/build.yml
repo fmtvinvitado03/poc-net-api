@@ -44,12 +44,19 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+      - name: Build Docker image
+        run: |
+          docker build -f ./Dockerfile -t soabel/poc-net-api:latest -t soabel/poc-net-api:${{ github.sha }} .
+
+      - name: Scan Docker image for vulnerabilities
+        uses: aquasecurity/trivy-action@v0.19.0
         with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: |
-            soabel/poc-net-api:latest
-            soabel/poc-net-api:${{ github.sha }}
+          image-ref: soabel/poc-net-api:${{ github.sha }}
+          format: table
+          exit-code: 1
+          ignore-unfixed: true
+
+      - name: Push Docker image
+        run: |
+          docker push soabel/poc-net-api:latest
+          docker push soabel/poc-net-api:${{ github.sha }}
