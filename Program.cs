@@ -43,6 +43,13 @@ app.MapGet("/health", () =>
 .WithName("health")
 .WithOpenApi();
 
+app.MapGet("/sum", (int a, int b) =>
+{
+    return new { a, b, sum = a + b };
+})
+.WithName("GetSum")
+.WithOpenApi();
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
