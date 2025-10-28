@@ -4,3 +4,8 @@ GET {{demo_api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{demo_api_HostAddress}}/sum?a=5&b=3
+Accept: application/json
+
+###
