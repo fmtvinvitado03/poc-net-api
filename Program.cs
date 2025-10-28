@@ -50,6 +50,17 @@ app.MapGet("/sum", (int a, int b) =>
 .WithName("GetSum")
 .WithOpenApi();
 
+app.MapGet("/divide", (int a, int b) =>
+{
+    if (b == 0)
+    {
+        return Results.BadRequest(new { error = "Division by zero is not allowed" });
+    }
+    return Results.Ok(new { a, b, result = (double)a / b });
+})
+.WithName("GetDivide")
+.WithOpenApi();
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
