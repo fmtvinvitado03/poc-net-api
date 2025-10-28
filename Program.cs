@@ -61,6 +61,23 @@ app.MapGet("/divide", (int a, int b) =>
 .WithName("GetDivide")
 .WithOpenApi();
 
+app.MapGet("/loadbalance", () =>
+{
+    var hostname = System.Environment.MachineName;
+    var ipAddress = System.Net.Dns.GetHostEntry(hostname).AddressList
+        .FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)?.ToString() ?? "N/A";
+    
+    return new
+    {
+        podName = hostname,
+        podIp = ipAddress,
+        timestamp = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss.fff"),
+        message = "Load balancing verification endpoint"
+    };
+})
+.WithName("GetLoadBalance")
+.WithOpenApi();
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
