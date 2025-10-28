@@ -9,3 +9,8 @@ GET {{demo_api_HostAddress}}/sum?a=5&b=3
 Accept: application/json
 
 ###
+
+GET {{demo_api_HostAddress}}/divide?a=10&b=2
+Accept: application/json
+
+###
